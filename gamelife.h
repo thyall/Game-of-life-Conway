@@ -1,6 +1,6 @@
 /*	!Author:Thyall D'greville
  *
- * 	\ in this code I define the cell class
+ * 	\ in this code I define the GameLife class
  *
  *  @date November, 27th.
  */
@@ -9,12 +9,13 @@
 #define GAMELIFE_H_
 
 
-class Cell
+class GameLife
 {
 private:
 
+	//alocação inspirada no batleship
 	char **board;//!< para armazenar a grade
-	char **clone_board; //!< uma grade copia que irá ser necessaria para os metodos
+	char **future_board; //!< uma grade copia que irá ser necessaria para os metodos
 	int linha, coluna; //!< dimensões da grade
 	char live, dead;//!< aqui eu recebo qual simbolo está sendo usada para cada tipo de celula
 
@@ -22,29 +23,34 @@ private:
 public:
 
 	//construtor, aqui eu aloco o espaço necessario para a matriz
-	Cell(int x, int y);
+	GameLife(int x, int y);
 
 	//destrutor, mas não será necesasrio
-	~Cell();
+	~GameLife();
 
 	//contador de vivos ou não vivos na vizinhaça
-	int NumNeighbors(int x, int y);
+	int NumNeighborsLive(int x, int y);
 
 	//printa a matriz a ser passada, talvez crie uma variavel para definir qual será passada
 	void Print();
 
 	//aqui eu analiso o estado atual da geração para poder gerar o proximo
+	//e parmazeno tudo na matriz future
 	void NextGeneration();
 
+	//essa função passa toda configuração de future_board para o board
+	void PassGeneration();
+
 	//função para determinar se a configuração se encontra estável
-	void Stable();
+	bool Stable();
 
 	//função para determinar se a configuração se encontra extinct
-	void Extinct();
+	bool Extinct();
 
+	//sobrecarga
 	operator =();
 
-	operator ==();
+	//operator ==();
 	
 };
 
