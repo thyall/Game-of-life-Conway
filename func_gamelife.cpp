@@ -68,7 +68,7 @@ void GameLife::print()
 	}
 }
 
-void GameLife::NextGeneration()
+void GameLife::NextGeneration(GameLife &game)
 {
 	int aux = 0;
 
@@ -84,32 +84,32 @@ void GameLife::NextGeneration()
 			if(board[i][j] == live) // se a celula estiver viva
 			{
 				if(aux == 2 or aux == 3)
-					future_board[i][j] = live;
+					game[i][j] = game.live;
 
 				else
-					future_board[i][j] = dead;
+					game[i][j] = game.dead;
 			}
 
 			else
 			{
 				if(aux == 3)//se a celula estiver morta
-					future_board[i][j] = live;
+					game[i][j] = game.live;
 
 				else
-					future_board[i][j] = dead;
+					game[i][j] = game.dead;
 			}		
 		}
 		std::endl;
 	}
 }
 
-void GameLife::PassGeneration()
+void GameLife::PassGeneration(GameLife &game)
 {
 	for (int i = 0; i < linha; ++i)
 	{
 		for (int j = 0; j < coluna; ++j)
 		{
-			board[i][j] = future_board[i][j];
+			game.board[i][j] = game.future_board[i][j];
 		}
 	}
 }

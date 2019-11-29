@@ -48,7 +48,7 @@ public:
 	bool Extinct();
 
 	//sobrecarga
-	operator =();
+	//operator =();
 
 	//operator ==();
 	
