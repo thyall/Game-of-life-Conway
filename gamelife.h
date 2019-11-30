@@ -8,6 +8,8 @@
 #ifndef GAMELIFE_H_
 #define GAMELIFE_H_
 
+/// possiveis saidas para ReadArguemnts()
+#define ERR_FAILED_OPENING_INPUT_FILE 0
 
 class GameLife
 {
@@ -32,7 +34,10 @@ public:
 	int NumNeighborsLive(int x, int y);
 
 	//printa a matriz a ser passada, talvez crie uma variavel para definir qual será passada
-	void Print();
+	void Print() const;
+
+	//função para ler o arquivo e receber as variaveis da classe
+	void ReadArguments(std::string file_name)
 
 	//aqui eu analiso o estado atual da geração para poder gerar o proximo
 	//e parmazeno tudo na matriz future

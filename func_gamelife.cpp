@@ -10,17 +10,17 @@ GameLife::GameLife(int x, int y)
 	coluna = y;
 
 	//alocando dinamicamente a dimensão x
-	board = new char*[x+1];
-	future_board = new char*[x+1];
+	board = new char*[x+2];
+	future_board = new char*[x+2];
 
 	//nesse for eu estou alocando a outra dimensão Y para cada ponteira ja alocado 
 	for (int i = 0; i < y; ++i)
 	{
-		board[i] = new char[y+1];
-		future_board = new char[y+1];
+		board[i] = new char[y+2];
+		future_board = new char[y+2];
 	}
 
-	//é incrementado +1 para não acorrer risco de segmentation fault
+	//é incrementado +2 para não acorrer risco de segmentation fault
 }
 
 int GameLife::NumNeighborsLive(int x, int y)
@@ -55,7 +55,33 @@ int GameLife::NumNeighborsLive(int x, int y)
 
 }
 
-void GameLife::print()
+void GameLife::ReadArguments(std::sting file_name)
+{
+	//Variaveis para linha e coluna 
+	int x, y;
+	//variaveis para o char vivo e morto
+	char live2, morto2;
+
+	// The input file strem.
+    std::ifstream ifs { file_name }; // Creating and Opening the stream
+
+    // Check whether we sucessfully open the input file.
+    if ( ifs.fail() ) return ERR_FAILED_OPENING_INPUT_FILE;
+    
+    //passando valores
+    ifs >> x >> y;
+    ifs >> live2;
+
+    //armazendo os valores recebidos na estrutura 
+    linha = x;
+    coluna = y;
+    live = live2;
+
+   
+    ifs.close();  
+}
+
+void GameLife::print() const
 {
 	for (int i = 0; i < linha; ++i)
 	{
@@ -81,22 +107,22 @@ void GameLife::NextGeneration(GameLife &game)
 			/*!<aqui estou aplicando as regras propostas
 			 * e armazenando isso na matriz future_board
 			 */
-			if(board[i][j] == live) // se a celula estiver viva
+			if(game.board[i][j] == live) // se a celula estiver viva
 			{
 				if(aux == 2 or aux == 3)
-					game[i][j] = game.live;
+					 game.future_board[i][j] = game.live;
 
 				else
-					game[i][j] = game.dead;
+					 game.future_board[i][j] = game.dead;
 			}
 
 			else
 			{
 				if(aux == 3)//se a celula estiver morta
-					game[i][j] = game.live;
+					 game.future_board[i][j] =  game.future_board.live;
 
 				else
-					game[i][j] = game.dead;
+					 game.future_board[i][j] =  game.future_board.dead;
 			}		
 		}
 		std::endl;
