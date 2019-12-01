@@ -3,6 +3,7 @@
 #include<chrono>
 #include <fstream>
 #include <iostream>
+#include <thread>
 
 /// Converte uma string para minusculas
 std::string str_tolower( std::string str )
@@ -69,25 +70,53 @@ int main(int argc, char const *argv[])
       message("Invalid Flag try: -maxgen or -max"); 
 
     
-    //std::cout << max << " " << file_name << std::endl; 
+    std::cout << max << " " << file_name << std::endl; 
 
 
     //The_game.ReadArguments(file_name);
-    GameLife The_game(file_name, 8, 8, '*');
+    GameLife The_game(file_name);
 
     The_game.Print(); // pegar forma de print do snake depois
 
-    auto bobo = The_game.NumNeighborsLive(0,1, The_game);
+    std::cout << std::endl;
+    int i = 0;
+    int gerax = 1;
+    bool st;
+    bool ex;
+    while(i < max)
+    {
+      //The_game.SetFillFBoard(The_game);
+      The_game.NextGeneration(The_game);
 
-    std::cout << bobo << std::endl;
+      std::this_thread::sleep_for (std::chrono::microseconds(105000)); //melhor periodo
 
-    //The_game.SetFillFBoard(The_game);
-    The_game.NextGeneration(The_game);
+      //GameLife teste(file_name, 8, 8);
+      std::cout << "Geração: " << gerax << std::endl;
 
-    GameLife::teste(file_name, 8, 8, '*');
-    teste.PasseGeneration()
+      st = The_game.Stable();
+      ex = The_game.Extinct();
 
-    //The_game.Print();
+      The_game.PassGeneration(The_game);
+
+      if(st)
+      {
+        std::cerr << "Configuração Estavel!!!" << std::endl;
+        break;
+      }
+
+      if(ex)
+      {
+        std::cerr << "Configuração Morta!!!" << std::endl;
+        break;
+      }
+
+      The_game.SetFillFBoard(The_game);
+
+      std::cout << std::endl;     
+
+      i++;
+      gerax++;
+    }   
 
     return 0;
 }
