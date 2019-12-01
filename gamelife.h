@@ -11,6 +11,11 @@
 /// possiveis saidas para ReadArguemnts()
 #define ERR_FAILED_OPENING_INPUT_FILE 0
 
+#include<string>
+#include<chrono>
+#include <fstream>
+#include <iostream>
+
 class GameLife
 {
 private:
@@ -25,26 +30,28 @@ private:
 public:
 
 	//construtor, aqui eu aloco o espaço necessario para a matriz
-	GameLife(int x, int y);
+	GameLife(std::string file_name , int a, int b, char live2);
 
 	//destrutor, mas não será necesasrio
-	~GameLife();
+	//~GameLife();
 
 	//contador de vivos ou não vivos na vizinhaça
-	int NumNeighborsLive(int x, int y);
+	int NumNeighborsLive(int x, int y, GameLife &game);
 
 	//printa a matriz a ser passada, talvez crie uma variavel para definir qual será passada
-	void Print() const;
+	void Print(void) const;
 
 	//função para ler o arquivo e receber as variaveis da classe
-	void ReadArguments(std::string file_name)
+	//void ReadArguments(std::string file_name);
 
 	//aqui eu analiso o estado atual da geração para poder gerar o proximo
 	//e parmazeno tudo na matriz future
-	void NextGeneration();
+	void NextGeneration(GameLife &game);
+
+	void SetFillFBoard(GameLife &game);
 
 	//essa função passa toda configuração de future_board para o board
-	void PassGeneration();
+	void PassGeneration(GameLife &game);
 
 	//função para determinar se a configuração se encontra estável
 	bool Stable();
