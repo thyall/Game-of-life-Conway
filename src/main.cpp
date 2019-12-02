@@ -83,6 +83,7 @@ int main(int argc, char const *argv[])
     int gerax = 1;
     bool st;
     bool ex;
+
     while(i < max)
     {
       //The_game.SetFillFBoard(The_game);
@@ -98,15 +99,15 @@ int main(int argc, char const *argv[])
 
       The_game.PassGeneration(The_game);
 
-      if(st)
+       if(ex)
       {
-        std::cerr << "Configuração Estavel!!!" << std::endl;
+        std::cerr << "Configuração Morta!!!" << std::endl;
         break;
       }
 
-      if(ex)
+      if(st)
       {
-        std::cerr << "Configuração Morta!!!" << std::endl;
+        std::cerr << "Configuração Estavel!!!" << std::endl;
         break;
       }
 
@@ -120,4 +121,3 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-

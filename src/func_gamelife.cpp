@@ -66,6 +66,10 @@ GameLife::GameLife(std::string file_name)
    
     ifs.close();  	
 }
+/*!< Nesse metodo 
+*	 eu analiso todas as possibilidades de vizinhança estando na borda ou não
+*	 conforme analisado eu incremento na variavel count e retorno ela
+*/
 
 int GameLife::NumNeighborsLive(int x, int y, GameLife &game)
 {
@@ -232,6 +236,9 @@ int GameLife::NumNeighborsLive(int x, int y, GameLife &game)
 
 	return count;
 }
+/*!< Nesse metodo 
+*	 eu passo toda configuração armazenada na matriz future e passo para a matriz atual board
+*/
 
 void GameLife::SetFillFBoard(GameLife &game)
 {
@@ -243,6 +250,9 @@ void GameLife::SetFillFBoard(GameLife &game)
 		}	
 	}
 }
+/*!< Nesse metodo 
+*	 printo no terminal a configuração da matriz atual board
+*/
 void GameLife::Print(void) const
 {
 	for (int i = 0; i < linha; ++i)
@@ -255,6 +265,11 @@ void GameLife::Print(void) const
 		std::cout<< std::endl;
 	}
 }
+
+/*!< Nesse metodo 
+*	 aqui eu crio uma nova geração a partir da configuração da geração atual board
+*	 seguindo as regras de vizinhança e armazeno tudo na geração future
+*/
 
 void GameLife::NextGeneration(GameLife &game)
 {
@@ -305,6 +320,9 @@ void GameLife::NextGeneration(GameLife &game)
 	}
 }
 
+/*!< Nesse metodo 
+*	 printo no terminal a configuração da matriz future
+*/
 void GameLife::PassGeneration(GameLife& game)
 {
 	for (int i = 0; i < linha; ++i)
@@ -318,6 +336,10 @@ void GameLife::PassGeneration(GameLife& game)
 	}
 }
 
+/*!< Nesse metodo 
+*	 eu reconhço se a configuração se tornou estável (n=0)
+*	 falta melhorar esse metodo para reconhecer se está estavel com (n=1)
+*/
 bool GameLife::Stable()
 {
 	int aux = 0;//variavel para podermos pausar
@@ -338,6 +360,10 @@ bool GameLife::Stable()
 		return false;
 }
 
+/*!< Nesse metodo 
+*	 eu reconhço se a configuração se tornou extinta
+*	todos mortos
+*/
 bool GameLife::Extinct()
 {
 	int aux = 0;//variavel para podermos pausar
@@ -357,7 +383,6 @@ bool GameLife::Extinct()
 	else 
 		return false;
 }
-
 
 
 
