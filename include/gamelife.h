@@ -41,13 +41,11 @@ public:
 	//printa a matriz a ser passada, talvez crie uma variavel para definir qual será passada
 	void Print(void) const;
 
-	//função para ler o arquivo e receber as variaveis da classe
-	//void ReadArguments(std::string file_name);
-
 	//aqui eu analiso o estado atual da geração para poder gerar o proximo
-	//e parmazeno tudo na matriz future
+	//e armazeno tudo na matriz future
 	void NextGeneration(GameLife &game);
-
+	
+	//passo a configuração de future_board para board
 	void SetFillFBoard(GameLife &game);
 
 	//essa função passa toda configuração de future_board para o board
@@ -58,11 +56,6 @@ public:
 
 	//função para determinar se a configuração se encontra extinct
 	bool Extinct();
-
-	//sobrecarga
-	//operator =();
-
-	//operator ==();
 	
 };
 
