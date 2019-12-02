@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall   CMakeFiles/glife.dir/src/func_gamelife.cpp.o CMakeFiles/glife.dir/src/main.cpp.o  -o glife 

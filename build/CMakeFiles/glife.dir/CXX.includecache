@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/gamelife.h
+string
+-
+chrono
+-
+fstream
+-
+iostream
+-
+
+/mnt/c/Users/Thyall D'greville/LP1/teste/Game-of-life-Conway/src/func_gamelife.cpp
+gamelife.h
+/mnt/c/Users/Thyall D'greville/LP1/teste/Game-of-life-Conway/src/gamelife.h
+
+/mnt/c/Users/Thyall D'greville/LP1/teste/Game-of-life-Conway/src/main.cpp
+gamelife.h
+/mnt/c/Users/Thyall D'greville/LP1/teste/Game-of-life-Conway/src/gamelife.h
+string
+-
+chrono
+-
+fstream
+-
+iostream
+-
+thread
+-
+

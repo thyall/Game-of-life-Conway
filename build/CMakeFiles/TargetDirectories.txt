@@ -1,0 +1,3 @@
+/mnt/c/Users/Thyall D'greville/LP1/teste/Game-of-life-Conway/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Thyall D'greville/LP1/teste/Game-of-life-Conway/build/CMakeFiles/glife.dir
+/mnt/c/Users/Thyall D'greville/LP1/teste/Game-of-life-Conway/build/CMakeFiles/edit_cache.dir
